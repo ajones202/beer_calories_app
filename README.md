@@ -1,2 +1,2 @@
-# BeerApp
+# beerapp
 Beer Calories App
