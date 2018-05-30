@@ -1,0 +1,2 @@
+class Lists < ApplicationRecord
+end
