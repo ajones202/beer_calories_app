@@ -12,26 +12,49 @@ import {
   View
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+
 
 type Props = {};
-export default class App extends Component<Props> {
+class App extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      beers: [],
+    };
+    this.renderBeers = this.renderBeers.bind(this);
+  }
+
+  renderBeers() {
+
+    console.log("this is beers", this.state.beers);
+  }
+
+  componentWillMount() {
+    fetch('http://localhost:3001')
+    .then(resp => resp.json())
+    .then(data => this.setState({
+      beers: data.all
+    }))
+  }
+
+
+    // return arr.map((el, index) => {
+    //   return <Text>{this.state.beers}</Text>
+    // })
+
+          // {JSON.stringify(this.state.beers)}
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Yay!!
+          {this.renderBeers()}
         </Text>
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
         <Text style={styles.instructions}>
-          {instructions}
+
         </Text>
       </View>
     );
@@ -56,3 +79,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+export default App;
