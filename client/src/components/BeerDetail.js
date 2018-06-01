@@ -10,7 +10,7 @@ import TileSquare from './TileSquare';
 
 
 const BeerDetail = ( { beers } ) => {
-    const { name, calories, img, abv } = beers;
+    const { name, calories, img, abv, walking, running, oz, carbs, biking } = beers;
     const {
             thumbnailStyle,
             headerContentStyle,
@@ -29,7 +29,11 @@ const BeerDetail = ( { beers } ) => {
         <View style={styles.headerContentStyle}>
           <Text style={headerTextStyle}></Text>
           <Text>{name}</Text>
-          <Text>abv:{abv}%</Text>
+          <Text>abv: {abv}%</Text>
+            <Text>Calories: {calories}</Text>
+             <Text>Walking: {walking}</Text>
+              <Text>Running: {running}</Text>
+               <Text>Biking: {biking}</Text>
         </View>
     </TileSquare>
 
@@ -48,15 +52,20 @@ const styles = {
     },
 
     thumbnailStyle: {
-      height: 200,
-      width: 100,
+      height: 400,
+      width: 200,
     },
     thumbnailContainerStyle: {
+      height: 400,
       justifyContent: 'center',
       alignItems: 'center',
       marginLeft: 10,
       marginRight: 10
     },
+
+    titleStyle: {
+      fontSize: 20,
+    }
 
   }
 
