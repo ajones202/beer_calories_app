@@ -22,9 +22,11 @@ class Beerlist extends Component {
     super(props);
     this.state = {
       beers: [],
-      isfiltered: false
+      isfiltered: false,
+      currentBeer: null
     };
     this.renderBeers = this.renderBeers.bind(this);
+    this.renderOne = this.renderOne.bind(this);
 
 
   }
@@ -38,11 +40,13 @@ class Beerlist extends Component {
   }
 
 
-renderOne(){
-  this.setState({
-      isfiltered: true
-    })
+  renderOne(id) {
+        this.setState({
+          currentBeer: id
+        });
 
+
+console.log('rendered')
 }
 //need an extra function to setstate
 //checls the conditirion od isfilteres. if is filtered is false, then do this, is is true, do a thing (renderbeers)
@@ -54,16 +58,20 @@ renderOne(){
 
 
   renderBeers() {
-
-//if isfiltered=true, then show the one beer corresponding to the id clicked
+    if(this.state.currentBeer){
+        return <BeerInfo />
+      } else {
     return (
       this.state.beers.map(beer=>
         <BeerDetail
       key={beer.name}
-      beers={beer} />
+      beers={beer}
+      changeState={this.props.changeState}
+      show={this.props.show}/>
 
       )
     )
+  }
   }
 
   render() {
@@ -71,8 +79,8 @@ renderOne(){
 
 
     <ScrollView>
-      <Text>{this.renderBeers()}</Text>
-
+      <Text>{this.renderBeers()}
+      </Text>
     </ScrollView>
 
     );

@@ -10,12 +10,13 @@ import TileSquare from './TileSquare';
 import { Header,  Button, Text, Icon } from 'native-base';
 import { createStackNavigator } from 'react-navigation';
 import BeerInfo from './BeerInfo';
+import Beerlist from './Beerlist';
 
 
 
 
-function BeerDetail( { beers }, props ){
-    const { id, name, calories, img, abv, walking, running, oz, carbs, biking } = beers;
+function BeerDetail(props){
+    const { id, name, calories, img, abv, walking, running, oz, carbs, biking } = props.beers;
     const {
             thumbnailStyle,
             headerContentStyle,
@@ -29,9 +30,11 @@ function buttonPress(id) {
  console.log(`these are the details for this beer ${name}
   calories ${calories}`)
  Alert.alert(`You would need to run for ${running} minutes to burn this off!`)
+ props.changeState('beerinfo', props.beers)
 }
-function favorites(name) {
- Alert.alert(`Add ${name} to favorites?`)
+function favorites() {
+ props.renderOne
+
 }
 
 
@@ -57,16 +60,16 @@ function favorites(name) {
             <Text><Icon name="bicycle" /> {biking} </Text>
         </View>
     </TileSquare>
-        <Button
+        {props.show === 'beerlist' ? <Button
         style={styles.textRight}
         info
         onPress={() => buttonPress(id)}>
           <Text>More Info</Text>
-        </Button>
+        </Button> : ''}
         <Button
         style={styles.textRight}
         notification
-        onPress={() => favorites(name)}>
+        onPress={() => favorites(id)}>
           <Text>Add to Favorites</Text>
         </Button>
     </Tile>

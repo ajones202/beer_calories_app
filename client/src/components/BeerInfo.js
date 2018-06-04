@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { Header,  Button, Text } from 'native-base';
 import Tile from './Tile';
-import { StackNavigator } from 'react-navigation';
 import BeerDetail from  './BeerDetail'
 
 function BeerInfo (props) {
@@ -25,12 +24,7 @@ function BeerInfo (props) {
 
 
 
-export default StackNavigator({
-  Home: {
-    screen: BeerInfo,
-  },
-});
-
+export default BeerInfo;
 
 
 
