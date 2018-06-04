@@ -20,6 +20,8 @@ http://res.cloudinary.com/dm6ofsjtd/image/upload/v1527633071/Screen_Shot_2018-05
 ## Technologies Used
 
     React Native
+    Ruby on Rails
+    
 
 
 ## MVP 
