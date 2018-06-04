@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
 import {
   Image,
-  Text,
-  View
+  View,
+  Navigation,
+  Alert
 } from 'react-native';
 import Tile from './Tile';
 import TileSquare from './TileSquare';
+import { Header,  Button, Text, Icon } from 'native-base';
+import { createStackNavigator } from 'react-navigation';
+import BeerInfo from './BeerInfo';
 
 
 
-const BeerDetail = ( { beers } ) => {
-    const { name, calories, img, abv, walking, running, oz, carbs, biking } = beers;
+
+function BeerDetail( { beers }, props ){
+    const { id, name, calories, img, abv, walking, running, oz, carbs, biking } = beers;
     const {
             thumbnailStyle,
             headerContentStyle,
             headerTextStyle,
             thumbnailContainerStyle,
       } = styles;
+
+
+
+function buttonPress(id) {
+ console.log(`these are the details for this beer ${name}
+  calories ${calories}`)
+ Alert.alert(`You would need to run for ${running} minutes to burn this off!`)
+}
+function favorites(name) {
+ Alert.alert(`Add ${name} to favorites?`)
+}
+
 
   return (
     <Tile>
@@ -31,12 +48,27 @@ const BeerDetail = ( { beers } ) => {
           <Text>{name}</Text>
           <Text>abv: {abv}%</Text>
             <Text>Calories: {calories}</Text>
-             <Text>Walking: {walking}</Text>
-              <Text>Running: {running}</Text>
-               <Text>Biking: {biking}</Text>
+             <Text>running</Text>
+            <Text><Icon name="heart" /> {running} </Text>
+            <Text>walking</Text>
+            <Text><Icon name="man" /> {walking} </Text>
+
+            <Text>biking</Text>
+            <Text><Icon name="bicycle" /> {biking} </Text>
         </View>
     </TileSquare>
-
+        <Button
+        style={styles.textRight}
+        info
+        onPress={() => buttonPress(id)}>
+          <Text>More Info</Text>
+        </Button>
+        <Button
+        style={styles.textRight}
+        notification
+        onPress={() => favorites(name)}>
+          <Text>Add to Favorites</Text>
+        </Button>
     </Tile>
     );
 
@@ -65,7 +97,14 @@ const styles = {
 
     titleStyle: {
       fontSize: 20,
-    }
+      fontFamily:'helvetica'
+    },
+    textRight: {
+    alignSelf: 'flex-end',
+    width: 200,
+    justifyContent: 'center',
+    marginTop:10
+},
 
   }
 

@@ -1,20 +1,36 @@
-// import React, { Component } from 'react';
-// import {
-//   Text,
-//   View
-// } from 'react-native';
+import React, { Component } from 'react';
+import {
+  View,
 
+} from 'react-native';
+import { Header,  Button, Text } from 'native-base';
+import Tile from './Tile';
+import { StackNavigator } from 'react-navigation';
+import BeerDetail from  './BeerDetail'
 
-// const BeerInfo = (props) => {
-//   const { textStyle, viewStyle } = styles;
-
-//   render(){
-//   return(
-//      <View>BeerInfo</View>
-//     );
-// };
-// }
+function BeerInfo (props) {
 
 
 
-// export default BeerInfo;
+  return(
+    <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+     <Button notification>
+
+      </Button>
+     BeerInfo
+     </View>
+    );
+
+}
+
+
+
+export default StackNavigator({
+  Home: {
+    screen: BeerInfo,
+  },
+});
+
+
+
+

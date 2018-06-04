@@ -3,6 +3,7 @@ import {
   Text,
   View
 } from 'react-native';
+import BeerInfo from './BeerInfo';
 
 
 const Header = (props) => {
@@ -11,6 +12,7 @@ const Header = (props) => {
   return(
      <View style={viewStyle}>
         <Text style={textStyle}>{props.headerText}</Text>
+        <BeerInfo />
      </View>
     );
 };
@@ -23,7 +25,7 @@ const styles = {
     height:60,
     paddingTop: 15,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2},
+    // shadowOffset: { width: 0, height: 2},
     shadowOpacity: 0.2,
     elevation: 2,
     position: 'relative',

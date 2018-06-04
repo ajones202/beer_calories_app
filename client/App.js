@@ -18,6 +18,9 @@ import Beerlist from './src/components/Beerlist';
 
 
 
+
+
+
 class App extends Component {
 
   render() {
@@ -25,7 +28,9 @@ class App extends Component {
       <View style={{ flex: 1}} >
         <Header headerText={'Beers'} />
         <Beerlist />
+
       </View>
+
     );
   }
 }
