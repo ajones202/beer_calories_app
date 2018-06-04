@@ -1,5 +1,7 @@
 {
   "name": "beer_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "native-base": "^2.4.5"
+  }
 }
