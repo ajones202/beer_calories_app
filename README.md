@@ -1,5 +1,3 @@
-# Project Name 
-
 Beer Calories App
 
 ## Project Description
